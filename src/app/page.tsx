@@ -1,5 +1,6 @@
 export default async function Home() {
   const coffees = await fetch(process.env.GET_COFFEES_URL!).then((res) => res.json());
+  const wantedCoffee = await fetch(`${process.env.GET_COFFEES_URL}?coffeeId=coffee-1`).then((res) => res.json());
 
   return (
     <main className="mx-4 mt-4">
@@ -14,6 +15,9 @@ export default async function Home() {
           </li>
         ))}
       </ul>
+
+      <h2 className="text-2xl mt-8">Wanted Coffee</h2>
+      <p>{wantedCoffee.name}</p>
     </main>
   );
 }
