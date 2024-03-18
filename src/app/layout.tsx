@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
 import "./globals.css";
+import Nav from "./_components/Nav/nav";
 
 const fraunces = Fraunces({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.className} sm:m-4`}>{children}</body>
+      <body className={`${fraunces.className}`}>
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }

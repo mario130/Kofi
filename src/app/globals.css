@@ -22,6 +22,8 @@ h6 {
 }
 
 p,
-span {
+span,
+li,
+a {
   @apply font-sans;
 }
