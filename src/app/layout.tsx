@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
 import "./globals.css";
-import Nav from "./_components/Nav/nav";
+import Nav from "./_components/Nav";
+import Footer from "./_components/Footer";
 
 const fraunces = Fraunces({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={`${fraunces.className}`}>
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

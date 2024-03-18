@@ -18,13 +18,12 @@ function classNames(...classes: string[]) {
 
 export default function Nav() {
   const pathname = usePathname()
-  console.log("path", pathname);
 
   return (
     <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
