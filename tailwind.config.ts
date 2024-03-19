@@ -23,7 +23,7 @@ const config: Config = {
         "t-orange": "#E94F37",
         "t-gray": "#83888F",
         "t-cream": "#FEFCF7",
-        "t-dark": "#262626",
+        "t-dark": "#333D4B",
         keyframes: {
           "accordion-down": {
             from: { height: "0" },
