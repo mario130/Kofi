@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -29,9 +30,13 @@ export default function CTA() {
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <button className="w-72 rounded-lg bg-gray-700 p-4 text-2xl sm:w-80 md:w-72">
+          <Link
+            href="/shop"
+            className="w-72 rounded-lg bg-gray-700 p-4 text-2xl text-white sm:w-80 md:w-72"
+            aria-label="Start shopping"
+          >
             Start shopping
-          </button>
+          </Link>
         </div>
       </div>
     </section>

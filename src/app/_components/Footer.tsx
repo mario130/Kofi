@@ -10,7 +10,7 @@ export default function Footer() {
       <Quality />
       <Headquarters />
 
-      <footer className="mx-auto mt-14 flex items-center justify-between bg-gradient-to-br from-gray-300/60 to-slate-300 px-2 py-3 sm:px-6 lg:px-8">
+      <footer className="mx-auto mt-14 flex items-center justify-between bg-slate-300 px-2 py-3 sm:px-6 lg:px-8">
         <Image
           src="/kofi-logo.webp"
           alt="Kofi logo"

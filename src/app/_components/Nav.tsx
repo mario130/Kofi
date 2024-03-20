@@ -38,12 +38,18 @@ export default function Nav() {
               </div>
               <div className="flex flex-1 items-center justify-between">
                 <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    src="/kofi-logo.webp"
-                    alt="Kofi logo"
-                    width={125}
-                    height={44}
-                  />
+                  <Link
+                    href="/"
+                    className="flex items-center"
+                    aria-label="Homepage"
+                  >
+                    <Image
+                      src="/kofi-logo.webp"
+                      alt="Kofi logo"
+                      width={125}
+                      height={44}
+                    />
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
