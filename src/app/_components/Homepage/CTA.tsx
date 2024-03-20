@@ -2,26 +2,38 @@ import Image from "next/image";
 
 export default function CTA() {
   return (
-    <section className="max-h-[550px] max-w-7xl overflow-hidden relative mx-4 rounded-xl mt-4 xl:mx-auto">
+    <section className="relative mx-4 mt-4 max-h-[550px] max-w-7xl overflow-hidden rounded-xl xl:mx-auto">
       <picture>
-        <source srcSet="/hero-desktop.jpg"
-          media="(min-width: 1024px)" />
-        <source srcSet="/hero-tablet.jpg"
-          media="(min-width: 800px)" />
-        <Image src="/hero-mobile.jpg" alt=""
+        <source
+          srcSet="/homepage/hero-desktop.jpg"
+          media="(min-width: 1024px)"
+        />
+        <source srcSet="/homepage/hero-tablet.jpg" media="(min-width: 800px)" />
+        <Image
+          src="/homepage/hero-mobile.jpg"
+          alt=""
           width={0}
           height={0}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: "100%", height: "100%" }}
           layout="responsive"
-          objectFit="cover" />
+          objectFit="cover"
+        />
       </picture>
-      <div className="absolute top-0 text-center md:text-left text-white h-full flex flex-col justify-center">
-        <div className="h-full py-10 sm:py-0 sm:h-96 flex flex-col justify-between items-center md:items-start md:pl-8">
-          <h1 className="text-6xl font-bold md:w-[400px] xl:w-[700px]">Great coffee made simple.</h1>
-          <p className="text-lg font-extralight mt-5 leading-8 w-96 md:w-[450px] xl:w-[600px]">Start your mornings with the world’s best coffees. Try our expertly curated artisan
-            coffees from our best roasters delivered directly to your door, at your schedule.</p>
-          <button className="text-2xl bg-gray-700 p-4 rounded-lg w-80 md:w-72">Create your plan</button>
+      <div className="absolute top-0 flex h-full flex-col justify-center text-center text-white md:text-left">
+        <div className="flex h-full flex-col items-center justify-between py-10 sm:h-96 sm:py-0 md:items-start md:pl-8">
+          <h1 className="text-6xl font-bold md:w-[400px] xl:w-[700px]">
+            Great coffee made simple.
+          </h1>
+          <p className="mt-5 w-96 text-lg font-extralight leading-8 md:w-[450px] xl:w-[600px]">
+            Start your mornings with the world’s best coffees. Try our expertly
+            curated artisan coffees from our best roasters delivered directly to
+            your door, at your schedule.
+          </p>
+          <button className="w-80 rounded-lg bg-gray-700 p-4 text-2xl md:w-72">
+            Start shopping
+          </button>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 }

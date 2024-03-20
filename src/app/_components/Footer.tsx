@@ -1,17 +1,27 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 export default function Footer() {
   return (
-    <footer className='flex justify-between items-center mt-8 py-3 mx-auto px-2 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-300/60 to-slate-300'>
-      <Image src='/kofi-logo.webp' alt='Kofi logo' width={125} height={44} className='' />
+    <footer className="mx-auto mt-8 flex items-center justify-between bg-gradient-to-br from-gray-300/60 to-slate-300 px-2 py-3 sm:px-6 lg:px-8">
+      <Image
+        src="/kofi-logo.webp"
+        alt="Kofi logo"
+        width={125}
+        height={44}
+        className=""
+      />
 
-      <p className="text-t-gray hidden sm:block">
-        &copy; {new Date().getFullYear()} Kofi. Made by <Link href="https://marioyonan.com" className='text-black underline'>Mario</Link> .
+      <p className="hidden text-t-gray sm:block">
+        &copy; {new Date().getFullYear()} Kofi. Made by{" "}
+        <Link href="https://marioyonan.com" className="text-black underline">
+          Mario
+        </Link>{" "}
+        .
       </p>
 
-      <div className="space-x-6 flex items-center mr-3">
+      <div className="mr-3 flex items-center space-x-6">
         <Link href="https://www.linkedin.com/in/mario130/" target="_blank">
           <Image src="/linkedin.svg" alt="Instagram" width={24} height={24} />
         </Link>
@@ -20,5 +30,5 @@ export default function Footer() {
         </Link>
       </div>
     </footer>
-  )
+  );
 }

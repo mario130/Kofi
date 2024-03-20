@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Disclosure } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: 'Homepage', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Shop', href: '/shop' },
-]
+  { name: "Homepage", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Shop", href: "/shop" },
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Nav() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <Disclosure as="nav">
@@ -38,7 +38,12 @@ export default function Nav() {
               </div>
               <div className="flex flex-1 items-center justify-between">
                 <div className="flex flex-shrink-0 items-center">
-                  <Image src='/kofi-logo.webp' alt='Kofi logo' width={125} height={44} />
+                  <Image
+                    src="/kofi-logo.webp"
+                    alt="Kofi logo"
+                    width={125}
+                    height={44}
+                  />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -47,8 +52,10 @@ export default function Nav() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          pathname === item.href ? 'text-black' : 'text-t-gray hover:text-black',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          pathname === item.href
+                            ? "text-black"
+                            : "text-t-gray hover:text-black",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                       >
                         {item.name}
@@ -68,8 +75,10 @@ export default function Nav() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    pathname === item.href ? 'bg-secondary' : 'hover:bg-secondary hover:bg-opacity-60',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    pathname === item.href
+                      ? "bg-secondary"
+                      : "hover:bg-secondary hover:bg-opacity-60",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                 >
                   {item.name}
@@ -80,5 +89,5 @@ export default function Nav() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
