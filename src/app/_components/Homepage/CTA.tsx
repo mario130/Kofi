@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,12 +31,13 @@ export default function CTA() {
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <Link
-            href="/shop"
-            className="w-72 rounded-lg bg-gray-700 p-4 text-2xl text-white sm:w-80 md:w-72"
-            aria-label="Start shopping"
-          >
-            Start shopping
+          <Link href="/shop" aria-label="Start shopping">
+            <Button
+              variant="default"
+              className="h-14 w-72 rounded-lg bg-gray-700 p-4 text-xl text-white hover:bg-gray-600 sm:w-80 md:w-72"
+            >
+              Start Shopping
+            </Button>
           </Link>
         </div>
       </div>
