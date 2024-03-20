@@ -21,15 +21,15 @@ export default function CTA() {
       </picture>
       <div className="absolute top-0 flex h-full flex-col justify-center text-center text-white md:text-left">
         <div className="flex h-full flex-col items-center justify-between py-10 sm:h-96 sm:py-0 md:items-start md:pl-8">
-          <h1 className="text-6xl font-bold md:w-[400px] xl:w-[700px]">
+          <h1 className="text-4xl xs:text-5xl md:text-6xl font-bold md:w-[400px] xl:w-[700px]">
             Great coffee made simple.
           </h1>
-          <p className="mt-5 w-96 text-lg font-extralight leading-8 md:w-[450px] xl:w-[600px]">
+          <p className="mt-5 w-72 xs:w-80 sm:w-96 text-lg font-extralight leading-8 md:w-[450px] xl:w-[600px]">
             Start your mornings with the world’s best coffees. Try our expertly
             curated artisan coffees from our best roasters delivered directly to
             your door, at your schedule.
           </p>
-          <button className="w-80 rounded-lg bg-gray-700 p-4 text-2xl md:w-72">
+          <button className="w-72 sm:w-80 rounded-lg bg-gray-700 p-4 text-2xl md:w-72">
             Start shopping
           </button>
         </div>

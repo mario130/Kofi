@@ -17,6 +17,9 @@ const config: Config = {
       },
     },
     extend: {
+      screens: {
+        'xs': '380px',
+      },
       colors: {
         primary: "#0E8784",
         secondary: "#FDD6BA",
