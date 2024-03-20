@@ -10,8 +10,6 @@ export default async function Home() {
       <CTA />
       <OurCollection />
       <PopularItem />
-      <Quality />
-      <Headquarters />
     </main>
   );
 }
