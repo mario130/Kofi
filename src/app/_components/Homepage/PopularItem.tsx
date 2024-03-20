@@ -54,8 +54,7 @@ export default function PopularItem() {
   return (
     <section className="mx-4 mt-28 max-w-7xl xl:mx-auto">
       <div className="text-center">
-        <h6 className="font-sans text-t-gold">Popular Item</h6>
-        <h4 className="mt-2 font-bold tracking-tighter">BUILD YOUR BASE.</h4>
+        <h4 className="text-center font-bold text-t-gray">BUILD YOUR BASE.</h4>
       </div>
       <main className="mt-10 space-y-10 lg:flex lg:space-x-2 lg:space-y-0">
         <aside className="ml-auto">
