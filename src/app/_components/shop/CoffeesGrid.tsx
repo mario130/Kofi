@@ -25,7 +25,7 @@ export default function CoffeesGrid({
       </p>
       <section className="grid gap-6 py-5 sm:grid-cols-2 lg:grid-cols-3">
         {coffees.map((coffee) => (
-          <div key={coffee.id} className="mx-auto max-w-96 relative">
+          <div key={coffee.id} className="relative mx-auto max-w-96">
             <Image
               src={coffee.imageUrl}
               alt={coffee.name}
@@ -33,11 +33,15 @@ export default function CoffeesGrid({
               height={280}
               className="rounded-lg bg-[#e9e3dd90]"
             />
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <h6 className="my-1 font-bold tracking-wide">{coffee.name}</h6>
-              <div className="flex flex-col space-y-1 absolute top-2 right-2 items-end">
-                <Badge variant="outline" className="font-sans h-5 bg-secondary">{coffee.intensity} intensity</Badge>
-                <Badge variant="default" className="font-sans h-5">{coffee.roast} roast</Badge>
+              <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
+                <Badge variant="outline" className="h-5 bg-secondary font-sans">
+                  {coffee.intensity} intensity
+                </Badge>
+                <Badge variant="default" className="h-5 font-sans">
+                  {coffee.roast} roast
+                </Badge>
               </div>
             </div>
             <p className="line-clamp-1">{coffee.description}</p>
