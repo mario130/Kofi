@@ -6,6 +6,7 @@ import Image from "next/image";
 import useCoffeeStore from "@/store/useCoffeeStore";
 import { Coffee } from "@/interfaces/Coffee";
 import { Badge } from "../ui/badge";
+import { capitalize } from "@/utils/Capitalize";
 
 export default function CoffeesGrid({
   coffees: coffeesToBeSaved,
@@ -37,10 +38,10 @@ export default function CoffeesGrid({
               <h6 className="my-1 font-bold tracking-wide">{coffee.name}</h6>
               <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
                 <Badge variant="outline" className="h-5 bg-secondary font-sans">
-                  {coffee.intensity} intensity
+                  {capitalize(coffee.intensity)} intensity
                 </Badge>
                 <Badge variant="default" className="h-5 font-sans">
-                  {coffee.roast} roast
+                  {capitalize(coffee.roast)} roast
                 </Badge>
               </div>
             </div>

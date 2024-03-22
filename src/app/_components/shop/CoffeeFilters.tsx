@@ -31,7 +31,7 @@ export default function CoffeeFilters() {
         />
       ))}
 
-      <h5 className="mb-3 mt-10 font-bold">Sort</h5>
+      <h5 className="mb-3 mt-10 font-bold">Price</h5>
       <RadioGroup
         onValueChange={(value) =>
           setFilters({ ...filters, sort: value as "asc" | "desc" })
@@ -39,11 +39,11 @@ export default function CoffeeFilters() {
       >
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="asc" id="sort-asc" />
-          <label htmlFor="sort-asc">Ascending</label>
+          <label htmlFor="sort-asc">Low to high</label>
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="desc" id="sort-desc" />
-          <label htmlFor="sort-desc">Descending</label>
+          <label htmlFor="sort-desc">High to low</label>
         </div>
       </RadioGroup>
     </>
