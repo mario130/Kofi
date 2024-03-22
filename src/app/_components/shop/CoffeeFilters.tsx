@@ -1,8 +1,10 @@
-"use client";
-
-import React, { useEffect } from "react";
-import { Checkbox } from "../ui/checkbox";
-import useCoffeeStore from "@/store/useCoffeeStore";
+import React from "react";
+import useCoffeeStore, {
+  AvailableIntensities,
+  AvailableRoasts,
+} from "@/store/useCoffeeStore";
+import { FilterItem } from "./FilterItem";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 export default function CoffeeFilters() {
   const { filters, setFilters } = useCoffeeStore();
@@ -10,39 +12,40 @@ export default function CoffeeFilters() {
   return (
     <>
       <h5 className="mb-3 font-bold">Intensity</h5>
-
-      <div className="flex items-center">
-        <Checkbox
-          onClick={() => setFilters({ intensity: ["mild"] })}
-          id="intensity-mild"
+      {AvailableIntensities.map((intensity) => (
+        <FilterItem
+          key={`intensity-${intensity}`}
+          filterFor="intensity"
+          id={`intensity-${intensity}`}
+          filterItem={intensity}
         />
-        <label
-          htmlFor="intensity-mild"
-          className="ml-3 cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-500"
-        >
-          Mild
-        </label>
-      </div>
+      ))}
 
-      <div className="flex items-center">
-        <Checkbox id="intensity-medium" />
-        <label
-          htmlFor="intensity-medium"
-          className="ml-3 cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-500"
-        >
-          Medium
-        </label>
-      </div>
+      <h5 className="mb-3 mt-10 font-bold">Roast</h5>
+      {AvailableRoasts.map((roast) => (
+        <FilterItem
+          key={`roast-${roast}`}
+          filterFor="roast"
+          id={`roast-${roast}`}
+          filterItem={roast}
+        />
+      ))}
 
-      <div className="flex items-center">
-        <Checkbox id="intensity-bold" />
-        <label
-          htmlFor="intensity-bold"
-          className="ml-3 cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-500"
-        >
-          Bold
-        </label>
-      </div>
+      <h5 className="mb-3 mt-10 font-bold">Sort</h5>
+      <RadioGroup
+        onValueChange={(value) =>
+          setFilters({ ...filters, sort: value as "asc" | "desc" })
+        }
+      >
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="asc" id="sort-asc" />
+          <label htmlFor="sort-asc">Ascending</label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="desc" id="sort-desc" />
+          <label htmlFor="sort-desc">Descending</label>
+        </div>
+      </RadioGroup>
     </>
   );
 }

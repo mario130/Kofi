@@ -1,18 +1,21 @@
 import { Coffee } from "@/interfaces/Coffee";
 import { create } from "zustand";
 
+export const AvailableRoasts = ["light", "medium", "dark"];
+export const AvailableIntensities = ["mild", "medium", "bold"];
+
 interface CoffeeState {
   coffees: Coffee[];
   setCoffees: (coffees: Coffee[]) => void;
   filters: {
     roast?: string[];
     intensity?: string[];
-    sort?: "ASC" | "DESC";
+    sort?: "asc" | "desc";
   };
   setFilters: (filters: {
     roast?: string[];
     intensity?: string[];
-    sort?: "ASC" | "DESC";
+    sort?: "asc" | "desc";
   }) => void;
 }
 
