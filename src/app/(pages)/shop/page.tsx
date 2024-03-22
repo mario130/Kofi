@@ -42,7 +42,7 @@ export default function Shop() {
         <CoffeeFilters />
       </aside>
 
-      <div className="col-span-3 md:col-span-3">
+      <div className="col-span-3 md:col-span-3 mt-10 sm:mt-0">
         <CoffeesGrid coffees={coffees} />
       </div>
     </main>
