@@ -41,13 +41,23 @@ export default function CoffeesGrid({
               <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
                 <Badge
                   variant="outline"
-                  className={generateBadgeClasses(coffee.intensity)}
+                  className={cn(
+                    "text-black h-5 font-sans",
+                    coffee.intensity === 'mild' && "bg-secondary",
+                    coffee.intensity === 'medium' && "bg-[#c6cfd7]",
+                    coffee.intensity === 'bold' && "bg-black text-white"
+                  )}
                 >
                   {capitalize(coffee.intensity)} intensity
                 </Badge>
                 <Badge
                   variant="default"
-                  className={generateBadgeClasses(coffee.roast)}
+                  className={cn(
+                    "text-black h-5 font-sans",
+                    coffee.roast === 'light' && "bg-secondary",
+                    coffee.roast === 'medium' && "bg-[#c6cfd7]",
+                    coffee.roast === 'dark' && "bg-black text-white"
+                  )}
                 >
                   {capitalize(coffee.roast)} roast
                 </Badge>
