@@ -38,11 +38,11 @@ export default function Shop() {
 
   return (
     <main className="mx-4 mt-10 max-w-8xl gap-10 sm:grid sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:mx-auto">
-      <aside className="w-72">
+      <aside className="w-full sm:w-72">
         <CoffeeFilters />
       </aside>
 
-      <div className="col-span-3 mt-10 sm:mt-0 md:col-span-3">
+      <div className="col-span-3 mt-5 sm:mt-0">
         <CoffeesGrid coffees={coffees} />
       </div>
     </main>
