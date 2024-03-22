@@ -20,6 +20,10 @@ const config: Config = {
       screens: {
         xs: "380px",
       },
+      maxWidth: {
+        "8xl": "88rem",
+        "9xl": "96rem",
+      },
       colors: {
         primary: "#0E8784",
         secondary: "#FDD6BA",
