@@ -10,8 +10,6 @@ import { capitalize } from "@/utils/Capitalize";
 import { cn } from "@/lib/utils";
 import { generateBadgeClasses } from "@/utils/generateBadgeClasses";
 
-
-
 export default function CoffeesGrid({
   coffees: coffeesToBeSaved,
 }: {
@@ -25,10 +23,10 @@ export default function CoffeesGrid({
 
   return (
     <>
-      <p className="text-center sm:text-left hidden sm:block">
+      <p className="hidden text-center sm:block sm:text-left">
         Showing 1 - {coffees.length} of {coffees.length} Coffees
       </p>
-      <section className="grid gap-6 sm:py-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="grid gap-6 sm:grid-cols-2 sm:py-5 lg:grid-cols-3">
         {coffees.map((coffee) => (
           <div key={coffee.id} className="relative mx-auto max-w-96">
             <Image
@@ -41,10 +39,16 @@ export default function CoffeesGrid({
             <div className="flex items-center justify-between">
               <h6 className="my-1 font-bold tracking-wide">{coffee.name}</h6>
               <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
-                <Badge variant="outline" className={generateBadgeClasses(coffee.intensity)}>
+                <Badge
+                  variant="outline"
+                  className={generateBadgeClasses(coffee.intensity)}
+                >
                   {capitalize(coffee.intensity)} intensity
                 </Badge>
-                <Badge variant="default" className={generateBadgeClasses(coffee.roast)}>
+                <Badge
+                  variant="default"
+                  className={generateBadgeClasses(coffee.roast)}
+                >
                   {capitalize(coffee.roast)} roast
                 </Badge>
               </div>

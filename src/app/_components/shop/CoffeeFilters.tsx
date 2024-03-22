@@ -14,7 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../ui/drawer"
+} from "../ui/drawer";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { Button } from "../ui/button";
@@ -27,7 +27,10 @@ export default function CoffeeFilters() {
       <Drawer>
         <DrawerTrigger asChild>
           <div className="flex justify-center">
-            <Button variant={"ghost"} className="sm:hidden flex items-center space-x-2 hover:bg-secondary w-full">
+            <Button
+              variant={"ghost"}
+              className="flex w-full items-center space-x-2 hover:bg-secondary sm:hidden"
+            >
               <AdjustmentsHorizontalIcon className="h-6 w-6" />
               <span>Filters</span>
             </Button>
@@ -39,7 +42,7 @@ export default function CoffeeFilters() {
               <h2>Filters</h2>
             </DrawerTitle>
           </DrawerHeader>
-          <DrawerDescription className="px-4 mb-8">
+          <DrawerDescription className="mb-8 px-4">
             <div className="grid grid-cols-2">
               <div>
                 <h5 className="mb-3 font-bold">Intensity</h5>
@@ -64,21 +67,21 @@ export default function CoffeeFilters() {
                 ))}
               </div>
             </div>
-            <div className="flex items-center mt-4 space-x-8">
+            <div className="mt-4 flex items-center space-x-8">
               <h5 className="font-bold">Price</h5>
               <RadioGroup
                 onValueChange={(value) =>
                   setFilters({ ...filters, sort: value as "asc" | "desc" })
                 }
-                className="flex"
+                className="flex space-x-4"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="asc" id="sort-asc" />
-                  <label htmlFor="sort-asc">Low to high</label>
+                  <RadioGroupItem value="asc" id="mob-sort-asc" />
+                  <label htmlFor="mob-sort-asc">Low to high</label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="desc" id="sort-desc" />
-                  <label htmlFor="sort-desc">High to low</label>
+                  <RadioGroupItem value="desc" id="mob-sort-desc" />
+                  <label htmlFor="mob-sort-desc">High to low</label>
                 </div>
               </RadioGroup>
             </div>

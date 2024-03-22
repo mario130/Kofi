@@ -37,7 +37,7 @@ export default function Shop() {
   }, [filters, setCoffees]);
 
   return (
-    <main className="mx-4 mt-10 max-w-8xl gap-10 sm:grid sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:mx-auto">
+    <main className="mx-4 mt-10 max-w-8xl gap-10 sm:grid sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 2xl:mx-auto">
       <aside className="w-full sm:w-72">
         <CoffeeFilters />
       </aside>
