@@ -8,7 +8,6 @@ import { Coffee } from "@/interfaces/Coffee";
 import { Badge } from "../ui/badge";
 import { capitalize } from "@/utils/Capitalize";
 import { cn } from "@/lib/utils";
-import { generateBadgeClasses } from "@/utils/generateBadgeClasses";
 
 export default function CoffeesGrid({
   coffees: coffeesToBeSaved,
@@ -37,7 +36,6 @@ export default function CoffeesGrid({
               className="rounded-lg bg-[#e9e3dd90]"
             />
             <div className="flex items-center justify-between">
-              <h6 className="my-1 font-bold tracking-wide">{coffee.name}</h6>
               <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
                 <Badge
                   variant="outline"
@@ -63,8 +61,9 @@ export default function CoffeesGrid({
                 </Badge>
               </div>
             </div>
-            <p className="line-clamp-1">{coffee.description}</p>
-            <p>${coffee.price}</p>
+            <h6 className="my-1 font-bold">{coffee.name}</h6>
+            <p className="line-clamp-1 text-gray-500 text-sm">{coffee.description}</p>
+            <p className="font-semibold">${coffee.price}</p>
           </div>
         ))}
       </section>
