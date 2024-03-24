@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 
 import ProductInfo from "@/app/_components/product/ProductInfo";
 import ProductOptions from "@/app/_components/product/ProductOptions";
+import ProductBreadcrump from "@/app/_components/product/ProductBreadcrump";
 
 export default function Item({ params }: { params: { item: string } }) {
   const [coffee, setCoffee] = React.useState<Coffee>();
@@ -28,7 +29,9 @@ export default function Item({ params }: { params: { item: string } }) {
 
   return (
     <main className="mx-auto w-full max-w-[1440px] px-6">
-      <div className="relative flex flex-col gap-16 py-6 sm:flex-row sm:items-start">
+      <ProductBreadcrump name={coffee?.name} />
+
+      <div className="relative flex flex-col gap-16 sm:flex-row sm:items-start sm:py-6">
         <ProductInfo coffee={coffee} />
 
         <div className="relative block w-full">

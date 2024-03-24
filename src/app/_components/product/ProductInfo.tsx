@@ -9,7 +9,7 @@ import { capitalize } from "@/utils/Capitalize";
 
 export default function ProductInfo({ coffee }: { coffee?: Coffee }) {
   return (
-    <div className="flex w-full flex-col gap-y-6 py-8 sm:sticky sm:top-48 sm:max-w-[300px] sm:py-0">
+    <div className="flex w-full flex-col gap-y-6 py-10 sm:sticky sm:top-48 sm:max-w-[300px] sm:py-0">
       <div className="mx-auto flex w-full flex-col gap-y-4 lg:max-w-[500px]">
         <p className="text-medium hover:text-ui-fg-subtle text-gray-400">
           {capitalize(coffee?.roast || "")} Roast
