@@ -14,19 +14,33 @@ type CartStore = {
   items: CartItem[];
   addToCart: (coffee: CartItem) => void;
   removeFromCart: (coffeeId: number) => void;
+  loadItems: () => void;
+  emptyCart: () => void;
 };
 
 const useCart = create<CartStore>((set) => ({
   items: [],
   addToCart: (coffee) => {
-    set((state) => ({
-      items: [...state.items, coffee],
-    }));
+    set((state) => {
+      const newItems = [...state.items, coffee];
+      localStorage.setItem('cart', JSON.stringify(newItems));
+      return { items: newItems };
+    });
   },
   removeFromCart: (coffeeId) => {
-    set((state) => ({
-      items: state.items.filter((coffee) => coffee.id !== coffeeId),
-    }));
+    set((state) => {
+      const newItems = state.items.filter((coffee) => coffee.id !== coffeeId);
+      localStorage.setItem('cart', JSON.stringify(newItems));
+      return { items: newItems };
+    });
+  },
+  loadItems: () => {
+    const storedItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    set({ items: storedItems });
+  },
+  emptyCart: () => {
+    localStorage.removeItem('cart');
+    set({ items: [] });
   },
 }));
 

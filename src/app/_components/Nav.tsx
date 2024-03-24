@@ -7,6 +7,8 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "./ui/button";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import useCart from "@/store/useCart";
+import { useEffect } from "react";
 
 const navigation = [
   { name: "Homepage", href: "/" },
@@ -21,6 +23,9 @@ function classNames(...classes: string[]) {
 
 export default function Nav() {
   const pathname = usePathname();
+  const { loadItems } = useCart();
+
+  useEffect(() => loadItems(), []);
 
   return (
     <Disclosure as="nav">

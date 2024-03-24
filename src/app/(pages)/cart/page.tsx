@@ -23,17 +23,35 @@ import { GiftIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { Toaster } from "@/app/_components/ui/sonner";
 
 export default function Cart() {
-  const { items, removeFromCart } = useCart();
+  const { items, removeFromCart, emptyCart } = useCart();
+  const router = useRouter();
 
   const deleteItem = (id: number) => {
     removeFromCart(id);
   };
 
+  const makeOrder = () => {
+    toast("Order placed successfully!", {
+      position: "top-right",
+      description: "Thank you for shopping with us, your coffee is on the way!",
+      important: true,
+      className: "bg-secondary",
+    });
+
+    setTimeout(() => {
+      emptyCart();
+      router.push("/");
+    }, 3000);
+  }
+
   return (
     <main className="px-4 sm:px-6">
-      {/* Show empty cart message */}
+      <Toaster />
       {items.length === 0 && (
         <Card className="mx-auto mt-6 w-full max-w-7xl">
           <CardHeader>
@@ -124,7 +142,7 @@ export default function Cart() {
                     <TableRow>
                       <TableCell>Subtotal</TableCell>
                       <TableCell className="text-right">
-                        ${items.reduce((acc, item) => acc + item.total, 0)}
+                        ${(items.reduce((acc, item) => acc + item.total, 0)).toFixed(2)}
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -152,7 +170,7 @@ export default function Cart() {
                 </Table>
               </CardContent>
               <CardFooter>
-                <Button className="w-full font-sans">
+                <Button className="w-full font-sans" onClick={makeOrder}>
                   Proceed to Checkout
                 </Button>
               </CardFooter>

@@ -47,7 +47,7 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
     toast("Item added to cart.", {
       position: "top-right",
       important: true,
-      className: "bg-green-500 text-white",
+      className: "bg-secondary",
       action: {
         label: "View Cart",
         onClick: () => {
