@@ -31,7 +31,6 @@ export default function CoffeesGrid({
           <Link
             key={coffee.id}
             href={`/shop/${coffee.id}`}
-            // passHref
           >
             <div key={coffee.id} className="relative mx-auto max-w-96">
               <Image
