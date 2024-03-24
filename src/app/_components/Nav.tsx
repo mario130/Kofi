@@ -9,6 +9,8 @@ import { Button } from "./ui/button";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import useCart from "@/store/useCart";
 import { useEffect } from "react";
+import { Badge } from "./ui/badge";
+import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Homepage", href: "/" },
@@ -23,7 +25,7 @@ function classNames(...classes: string[]) {
 
 export default function Nav() {
   const pathname = usePathname();
-  const { loadItems } = useCart();
+  const { loadItems, items } = useCart();
 
   useEffect(() => loadItems(), []);
 
@@ -37,9 +39,12 @@ export default function Nav() {
                 <Link href={"/cart"}>
                   <Button
                     variant="ghost"
-                    className="mr-2 rounded-md p-2 hover:bg-secondary hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    className="relative mr-3 rounded-md p-2 hover:bg-secondary hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   >
                     <ShoppingCartIcon className="h-6 w-6" />
+                    <span className="absolute -top-3 -right-3 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
+                      {items.length}
+                    </span>
                   </Button>
                 </Link>
                 {/* Mobile menu button*/}
@@ -73,14 +78,20 @@ export default function Nav() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={classNames(
-                          pathname === item.href
-                            ? "text-black"
-                            : "text-t-gray hover:text-black",
-                          "rounded-md px-3 py-2 font-medium"
+                        className={cn(
+                          "block rounded-md px-3 py-2 text-base font-medium relative",
+                          {
+                            "bg-secondary": pathname === item.href,
+                            "hover:bg-secondary hover:bg-opacity-60": pathname !== item.href,
+                          },
                         )}
                       >
                         {item.name}
+                        {item.name === "Cart" &&
+                          <span className="absolute -top-2 -right-2 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
+                            {items.length}
+                          </span>
+                        }
                       </Link>
                     ))}
                   </div>
@@ -91,16 +102,17 @@ export default function Nav() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {navigation.map((item) => item.name !== "Cart" && (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    pathname === item.href
-                      ? "bg-secondary"
-                      : "hover:bg-secondary hover:bg-opacity-60",
-                    "block rounded-md px-3 py-2 text-base font-medium"
+                  className={cn(
+                    "block rounded-md px-3 py-2 text-base font-medium",
+                    {
+                      "bg-secondary": pathname === item.href,
+                      "hover:bg-secondary hover:bg-opacity-60": pathname !== item.href,
+                    }
                   )}
                 >
                   {item.name}
