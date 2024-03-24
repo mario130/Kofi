@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Quality() {
   return (
-    <section className="mx-auto mt-52 max-w-7xl">
+    <section className="mx-auto mt-36 max-w-7xl">
       <div className="mx-4 rounded-xl bg-gray-800 px-8 pb-20 text-center text-t-cream md:px-14 lg:mt-28 lg:flex lg:flex-row-reverse lg:items-center lg:px-10 lg:pb-0">
         <picture>
           <source srcSet="/quality-desktop.jpg" media="(min-width: 1024px)" />

@@ -5,11 +5,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Button } from "./ui/button";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
   { name: "Homepage", href: "/" },
   { name: "About", href: "/about" },
   { name: "Shop", href: "/shop" },
+  { name: "Cart", href: "/cart" },
 ];
 
 function classNames(...classes: string[]) {
@@ -26,6 +29,14 @@ export default function Nav() {
           <div className="mx-auto p-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                <Link href={"/cart"}>
+                  <Button
+                    variant="ghost"
+                    className="mr-2 rounded-md p-2 hover:bg-secondary hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  >
+                    <ShoppingCartIcon className="h-6 w-6" />
+                  </Button>
+                </Link>
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-secondary hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
