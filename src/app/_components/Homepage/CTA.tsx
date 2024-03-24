@@ -19,6 +19,7 @@ export default function CTA() {
           style={{ width: "100%", height: "100%" }}
           layout="responsive"
           objectFit="cover"
+          priority
         />
       </picture>
       <div className="absolute top-0 flex h-full flex-col justify-center text-center text-white md:text-left">

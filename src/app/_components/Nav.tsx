@@ -46,9 +46,9 @@ export default function Nav() {
                     className="relative mr-3 rounded-md p-2 hover:bg-secondary hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   >
                     <ShoppingCartIcon className="h-6 w-6" />
-                    <span className="absolute -top-3 -right-3 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
+                    {items.length > 0 && <span className="absolute -top-3 -right-3 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
                       {items.length}
-                    </span>
+                    </span>}
                   </Button>
                 </Link>
                 {/* Mobile menu button*/}
@@ -91,7 +91,7 @@ export default function Nav() {
                         )}
                       >
                         {item.name}
-                        {item.name === "Cart" &&
+                        {item.name === "Cart" && items.length > 0 &&
                           <span className="absolute -top-2 -right-2 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
                             {items.length}
                           </span>
