@@ -10,15 +10,18 @@ import {
 import { Button } from "../ui/button";
 import { Coffee } from "@/interfaces/Coffee";
 import { useEffect, useState } from "react";
+import { Toaster } from "../ui/sonner";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("250");
   const [grind, setGrind] = useState("whole");
   const [price, setPrice] = useState(0);
+  const router = useRouter()
 
   const calculatePrice = () => {
-    // calculate based on quantity and size
     setPrice((coffee?.price || 0) * quantity * (+size / 250))
   }
   useEffect(() => {
@@ -26,6 +29,20 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
   }, [quantity, size])
 
   useEffect(() => setPrice(coffee?.price ?? 0), [coffee])
+
+  const addToCart = () => {
+    toast("Item added to cart.", {
+      position: "top-right",
+      important: true,
+      className: "bg-green-500 text-white",
+      action: {
+        label: "View Cart",
+        onClick: () => {
+          router.push("/cart")
+        }
+      }
+    })
+  }
 
   return (
     <div className="flex w-full flex-col gap-y-12 py-8 sm:sticky sm:top-48 sm:max-w-[300px] sm:py-0">
@@ -77,9 +94,10 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
               {coffee ? `$${price}` : ""}
             </p>
           </div>
-          <Button className="mt-4 py-5 font-sans text-sm">Add to Cart</Button>
+          <Button className="mt-4 py-5 font-sans text-sm" onClick={addToCart}>Add to Cart</Button>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }
