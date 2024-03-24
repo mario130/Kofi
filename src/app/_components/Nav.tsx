@@ -9,8 +9,8 @@ import { Button } from "./ui/button";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import useCart from "@/store/useCart";
 import { useEffect } from "react";
-import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
+import useCoffeeStore from "@/store/useCoffeeStore";
 
 const navigation = [
   { name: "Homepage", href: "/" },
@@ -26,8 +26,12 @@ function classNames(...classes: string[]) {
 export default function Nav() {
   const pathname = usePathname();
   const { loadItems, items } = useCart();
+  const { loadCoffees } = useCoffeeStore();
 
-  useEffect(() => loadItems(), []);
+  useEffect(() => {
+    loadItems()
+    loadCoffees()
+  }, []);
 
   return (
     <Disclosure as="nav">

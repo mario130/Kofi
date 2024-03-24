@@ -27,7 +27,6 @@ export default function ProductInfo({ coffee }: { coffee?: Coffee }) {
               Product Information
             </AccordionTrigger>
             <AccordionContent>
-              {/* some information about the coffee */}
               <p>
                 Our {coffee?.name.toLowerCase()} is a {coffee?.roast} roast
                 coffee that is {coffee?.intensity} intensity.

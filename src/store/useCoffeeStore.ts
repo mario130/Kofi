@@ -7,6 +7,7 @@ export const AvailableIntensities = ["mild", "medium", "bold"];
 interface CoffeeState {
   coffees: Coffee[];
   setCoffees: (coffees: Coffee[]) => void;
+  loadCoffees: () => void;
   filters: {
     roast?: string[];
     intensity?: string[];
@@ -21,7 +22,14 @@ interface CoffeeState {
 
 const useCoffeeStore = create<CoffeeState>()((set) => ({
   coffees: [],
-  setCoffees: (coffees: Coffee[]) => set({ coffees }),
+  setCoffees: (coffees: Coffee[]) => {
+    localStorage.setItem("coffees", JSON.stringify(coffees));
+    set({ coffees });
+  },
+  loadCoffees: () => {
+    const storedCoffees = JSON.parse(localStorage.getItem("coffees") || "[]");
+    set({ coffees: storedCoffees });
+  },
 
   filters: {
     roast: [],
