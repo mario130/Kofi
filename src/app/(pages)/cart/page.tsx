@@ -1,25 +1,37 @@
-"use client"
+"use client";
 
 import { Button } from "@/app/_components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/_components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/_components/ui/table";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/_components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/app/_components/ui/table";
 import useIsMobile from "@/hooks/useIsMobile";
 import useCart from "@/store/useCart";
 import { GiftIcon } from "@heroicons/react/24/outline";
 import { TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 
-
 export default function Cart() {
   const { items, removeFromCart } = useCart();
 
   const deleteItem = (id: number) => {
     removeFromCart(id);
-  }
+  };
 
   return (
-    <main className="md:flex max-w-[1440px] mx-auto px-6 space-y-10 md:space-y-0 gap-10 items-start">
-
+    <main className="mx-auto max-w-[1440px] items-start gap-10 space-y-10 px-6 md:flex md:space-y-0">
       <Card className="w-full basis-2/3">
         <CardHeader>
           <CardTitle>Shopping Cart</CardTitle>
@@ -27,7 +39,7 @@ export default function Cart() {
         </CardHeader>
         <CardContent className="p-0">
           <div className="border-t">
-            <Table className="overflow-x-auto w-[650px] md:w-auto">
+            <Table className="w-[650px] overflow-x-auto md:w-auto">
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[100px]">Image</TableHead>
@@ -53,14 +65,20 @@ export default function Cart() {
                         width="80"
                       />
                     </TableCell>
-                    <TableCell className="font-medium">{item.coffee.name}</TableCell>
+                    <TableCell className="font-medium">
+                      {item.coffee.name}
+                    </TableCell>
                     <TableCell>${item.coffee.price}</TableCell>
                     <TableCell>{item.quantity}</TableCell>
                     <TableCell>{item.size}</TableCell>
                     <TableCell>${item.total}</TableCell>
                     <TableCell className="text-right">
-                      <Button size="icon" variant="ghost" onClick={() => deleteItem(item.id)}>
-                        <TrashIcon className="w-4 h-4" />
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        onClick={() => deleteItem(item.id)}
+                      >
+                        <TrashIcon className="h-4 w-4" />
                         <span className="sr-only">Remove</span>
                       </Button>
                     </TableCell>
@@ -71,7 +89,6 @@ export default function Cart() {
           </div>
         </CardContent>
       </Card>
-
 
       <aside className="w-full basis-1/3">
         <Card>
@@ -99,7 +116,14 @@ export default function Cart() {
                 <TableRow>
                   <TableCell>Total</TableCell>
                   <TableCell className="text-right">
-                    ${Number((items.reduce((acc, item) => acc + item.total, 0) + 4.99 + 2.49).toFixed(2))}
+                    $
+                    {Number(
+                      (
+                        items.reduce((acc, item) => acc + item.total, 0) +
+                        4.99 +
+                        2.49
+                      ).toFixed(2)
+                    )}
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -111,5 +135,5 @@ export default function Cart() {
         </Card>
       </aside>
     </main>
-  )
+  );
 }

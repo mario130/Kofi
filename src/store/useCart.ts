@@ -1,9 +1,9 @@
-import create from 'zustand';
+import create from "zustand";
 import { Coffee } from "@/interfaces/Coffee";
 
 type CartItem = {
   id: number;
-  coffee: Coffee
+  coffee: Coffee;
   size: string;
   beanType: string;
   quantity: number;

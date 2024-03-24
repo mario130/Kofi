@@ -28,10 +28,7 @@ export default function CoffeesGrid({
       </p>
       <section className="grid gap-6 sm:grid-cols-2 sm:py-5 lg:grid-cols-3">
         {coffees.map((coffee) => (
-          <Link
-            key={coffee.id}
-            href={`/shop/${coffee.id}`}
-          >
+          <Link key={coffee.id} href={`/shop/${coffee.id}`}>
             <div key={coffee.id} className="relative mx-auto max-w-96">
               <Image
                 src={coffee.imageUrl}

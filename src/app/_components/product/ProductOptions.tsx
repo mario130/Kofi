@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Select,
@@ -20,17 +20,19 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
   const [size, setSize] = useState("250");
   const [grind, setGrind] = useState("whole");
   const [price, setPrice] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
   const { addToCart } = useCart();
 
   const calculatePrice = () => {
-    setPrice(Number(((coffee?.price || 0) * quantity * (+size / 250)).toFixed(2)))
-  }
+    setPrice(
+      Number(((coffee?.price || 0) * quantity * (+size / 250)).toFixed(2))
+    );
+  };
   useEffect(() => {
-    calculatePrice()
-  }, [quantity, size])
+    calculatePrice();
+  }, [quantity, size]);
 
-  useEffect(() => setPrice(coffee?.price ?? 0), [coffee])
+  useEffect(() => setPrice(coffee?.price ?? 0), [coffee]);
 
   const addItem = () => {
     addToCart({
@@ -39,8 +41,8 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
       size,
       beanType: grind === "whole" ? "Whole Bean" : "Fine Grind",
       quantity,
-      total: price
-    })
+      total: price,
+    });
 
     toast("Item added to cart.", {
       position: "top-right",
@@ -49,11 +51,11 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
       action: {
         label: "View Cart",
         onClick: () => {
-          router.push("/cart")
-        }
-      }
-    })
-  }
+          router.push("/cart");
+        },
+      },
+    });
+  };
 
   return (
     <div className="flex w-full flex-col gap-y-12 py-8 sm:sticky sm:top-48 sm:max-w-[300px] sm:py-0">
@@ -88,14 +90,23 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
 
           <div>
             <p className="mb-2 text-sm font-medium">Quantity</p>
-            <Select onValueChange={(v) => setQuantity(+v)} value={quantity.toString()}>
+            <Select
+              onValueChange={(v) => setQuantity(+v)}
+              value={quantity.toString()}
+            >
               <SelectTrigger className="rounded-md border" id="color">
                 <SelectValue placeholder="1" />
               </SelectTrigger>
               <SelectContent position="popper">
-                <SelectItem value="1" onSelect={() => setQuantity(1)}>1</SelectItem>
-                <SelectItem value="2" onSelect={() => setQuantity(2)}>2</SelectItem>
-                <SelectItem value="3" onSelect={() => setQuantity(3)}>3</SelectItem>
+                <SelectItem value="1" onSelect={() => setQuantity(1)}>
+                  1
+                </SelectItem>
+                <SelectItem value="2" onSelect={() => setQuantity(2)}>
+                  2
+                </SelectItem>
+                <SelectItem value="3" onSelect={() => setQuantity(3)}>
+                  3
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -105,7 +116,13 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
               {coffee ? `$${price}` : ""}
             </p>
           </div>
-          <Button className="mt-4 py-5 font-sans text-sm" onClick={addItem} disabled={!coffee}>Add to Cart</Button>
+          <Button
+            className="mt-4 py-5 font-sans text-sm"
+            onClick={addItem}
+            disabled={!coffee}
+          >
+            Add to Cart
+          </Button>
         </div>
       </div>
       <Toaster />
