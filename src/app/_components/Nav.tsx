@@ -112,9 +112,8 @@ export default function Nav() {
               {navigation.map(
                 (item) =>
                   item.name !== "Cart" && (
-                    <Disclosure.Button
+                    <Link
                       key={item.name}
-                      as="a"
                       href={item.href}
                       className={cn(
                         "block rounded-md px-3 py-2 text-base font-medium",
@@ -126,7 +125,7 @@ export default function Nav() {
                       )}
                     >
                       {item.name}
-                    </Disclosure.Button>
+                    </Link>
                   )
               )}
             </div>
