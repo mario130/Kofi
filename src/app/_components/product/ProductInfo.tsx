@@ -10,7 +10,6 @@ import { MotionDiv } from "../MotionDiv";
 
 export default function ProductInfo({ coffee }: { coffee?: Coffee }) {
   return (
-
     <div className="flex w-full flex-col gap-y-6 py-10 sm:sticky sm:top-48 sm:max-w-[300px] sm:py-0">
       <div className="mx-auto flex w-full flex-col gap-y-4 lg:max-w-[500px]">
         <MotionDiv

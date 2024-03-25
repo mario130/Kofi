@@ -67,7 +67,6 @@ export default function ProductOptions({ coffee }: { coffee?: Coffee }) {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
         >
-
           <div className="flex flex-col space-y-4">
             <div>
               <p className="mb-2 text-sm font-medium">Select Size</p>

@@ -23,23 +23,23 @@ const useCart = create<CartStore>((set) => ({
   addToCart: (coffee) => {
     set((state) => {
       const newItems = [...state.items, coffee];
-      localStorage.setItem('cart', JSON.stringify(newItems));
+      localStorage.setItem("cart", JSON.stringify(newItems));
       return { items: newItems };
     });
   },
   removeFromCart: (coffeeId) => {
     set((state) => {
       const newItems = state.items.filter((coffee) => coffee.id !== coffeeId);
-      localStorage.setItem('cart', JSON.stringify(newItems));
+      localStorage.setItem("cart", JSON.stringify(newItems));
       return { items: newItems };
     });
   },
   loadItems: () => {
-    const storedItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    const storedItems = JSON.parse(localStorage.getItem("cart") || "[]");
     set({ items: storedItems });
   },
   emptyCart: () => {
-    localStorage.removeItem('cart');
+    localStorage.removeItem("cart");
     set({ items: [] });
   },
 }));

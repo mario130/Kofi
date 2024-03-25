@@ -29,8 +29,8 @@ export default function Nav() {
   const { loadCoffees } = useCoffeeStore();
 
   useEffect(() => {
-    loadItems()
-    loadCoffees()
+    loadItems();
+    loadCoffees();
   }, []);
 
   return (
@@ -46,9 +46,11 @@ export default function Nav() {
                     className="relative mr-3 rounded-md p-2 hover:bg-secondary hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   >
                     <ShoppingCartIcon className="h-6 w-6" />
-                    {items.length > 0 && <span className="absolute -top-3 -right-3 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
-                      {items.length}
-                    </span>}
+                    {items.length > 0 && (
+                      <span className="absolute -right-3 -top-3 flex h-4 w-4 items-center justify-center rounded-full bg-secondary p-3">
+                        {items.length}
+                      </span>
+                    )}
                   </Button>
                 </Link>
                 {/* Mobile menu button*/}
@@ -83,19 +85,20 @@ export default function Nav() {
                         key={item.name}
                         href={item.href}
                         className={cn(
-                          "block rounded-md px-3 py-2 text-base font-medium relative",
+                          "relative block rounded-md px-3 py-2 text-base font-medium",
                           {
                             "bg-secondary": pathname === item.href,
-                            "hover:bg-secondary hover:bg-opacity-60": pathname !== item.href,
-                          },
+                            "hover:bg-secondary hover:bg-opacity-60":
+                              pathname !== item.href,
+                          }
                         )}
                       >
                         {item.name}
-                        {item.name === "Cart" && items.length > 0 &&
-                          <span className="absolute -top-2 -right-2 bg-secondary rounded-full w-4 h-4 flex items-center justify-center p-3">
+                        {item.name === "Cart" && items.length > 0 && (
+                          <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-secondary p-3">
                             {items.length}
                           </span>
-                        }
+                        )}
                       </Link>
                     ))}
                   </div>
@@ -106,22 +109,26 @@ export default function Nav() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => item.name !== "Cart" && (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={cn(
-                    "block rounded-md px-3 py-2 text-base font-medium",
-                    {
-                      "bg-secondary": pathname === item.href,
-                      "hover:bg-secondary hover:bg-opacity-60": pathname !== item.href,
-                    }
-                  )}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
+              {navigation.map(
+                (item) =>
+                  item.name !== "Cart" && (
+                    <Disclosure.Button
+                      key={item.name}
+                      as="a"
+                      href={item.href}
+                      className={cn(
+                        "block rounded-md px-3 py-2 text-base font-medium",
+                        {
+                          "bg-secondary": pathname === item.href,
+                          "hover:bg-secondary hover:bg-opacity-60":
+                            pathname !== item.href,
+                        }
+                      )}
+                    >
+                      {item.name}
+                    </Disclosure.Button>
+                  )
+              )}
             </div>
           </Disclosure.Panel>
         </>

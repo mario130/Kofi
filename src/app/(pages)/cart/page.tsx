@@ -47,7 +47,7 @@ export default function Cart() {
       emptyCart();
       router.push("/");
     }, 3000);
-  }
+  };
 
   return (
     <main className="px-4 sm:px-6">
@@ -142,7 +142,10 @@ export default function Cart() {
                     <TableRow>
                       <TableCell>Subtotal</TableCell>
                       <TableCell className="text-right">
-                        ${(items.reduce((acc, item) => acc + item.total, 0)).toFixed(2)}
+                        $
+                        {items
+                          .reduce((acc, item) => acc + item.total, 0)
+                          .toFixed(2)}
                       </TableCell>
                     </TableRow>
                     <TableRow>

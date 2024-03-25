@@ -1,5 +1,5 @@
-import { MotionDiv } from '@/app/_components/MotionDiv';
-import React from 'react';
+import { MotionDiv } from "@/app/_components/MotionDiv";
+import React from "react";
 
 export default function Template(props: { children: React.ReactNode }) {
   return (
@@ -12,4 +12,4 @@ export default function Template(props: { children: React.ReactNode }) {
       {props.children}
     </MotionDiv>
   );
-};
+}

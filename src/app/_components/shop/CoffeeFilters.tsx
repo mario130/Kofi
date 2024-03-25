@@ -95,7 +95,6 @@ export default function CoffeeFilters() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
         >
-
           <h5 className="mb-3 font-bold">Intensity</h5>
           {AvailableIntensities.map((intensity) => (
             <FilterItem
