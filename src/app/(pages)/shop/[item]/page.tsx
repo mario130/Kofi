@@ -47,8 +47,8 @@ export default function Item({ params }: { params: { item: string } }) {
                 <Image
                   src={coffee?.imageUrl ?? ""}
                   alt={coffee?.name ?? ""}
-                  width={0}
-                  height={0}
+                  width={400}
+                  height={400}
                   objectFit="cover"
                   layout="responsive"
                 />
