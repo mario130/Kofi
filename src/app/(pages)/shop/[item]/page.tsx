@@ -8,6 +8,7 @@ import ProductInfo from "@/app/_components/product/ProductInfo";
 import ProductOptions from "@/app/_components/product/ProductOptions";
 import ProductBreadcrump from "@/app/_components/product/ProductBreadcrump";
 import Suggestions from "@/app/_components/Suggestions";
+import { MotionDiv } from "@/app/_components/MotionDiv";
 
 export default function Item({ params }: { params: { item: string } }) {
   const [coffee, setCoffee] = React.useState<Coffee>();
@@ -37,14 +38,22 @@ export default function Item({ params }: { params: { item: string } }) {
           <ProductInfo coffee={coffee} />
 
           <div className="relative block w-full">
-            <div className="rounded-lg border bg-[#e9e3dd90]">
-              <Image
-                src={coffee?.imageUrl ?? ""}
-                alt={coffee?.name ?? ""}
-                width={800}
-                height={800}
-              />
-            </div>
+            <MotionDiv
+              transition={{ ease: "easeInOut", duration: 0.4, delay: 0.6 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className="rounded-lg border bg-[#e9e3dd90]">
+                <Image
+                  src={coffee?.imageUrl ?? ""}
+                  alt={coffee?.name ?? ""}
+                  width={0}
+                  height={0}
+                  objectFit="cover"
+                  layout="responsive"
+                />
+              </div>
+            </MotionDiv>
           </div>
 
           <ProductOptions coffee={coffee} />

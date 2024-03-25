@@ -3,6 +3,7 @@ import { Fraunces } from "next/font/google";
 import "./globals.css";
 import Nav from "./_components/Nav";
 import Footer from "./_components/Footer";
+import { MotionDiv } from "./_components/MotionDiv";
 
 const fraunces = Fraunces({ subsets: ["latin"] });
 
@@ -19,7 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fraunces.className}`}>
-        <Nav />
+        <MotionDiv
+          layout
+          transition={{ ease: "easeInOut", duration: 0.4 }}
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Nav />
+        </MotionDiv>
         {children}
         <Footer />
       </body>
