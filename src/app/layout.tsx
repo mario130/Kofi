@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "./_components/Nav";
 import Footer from "./_components/Footer";
 import { MotionDiv } from "./_components/MotionDiv";
+import { Analytics } from "@vercel/analytics/react"
 
 const fraunces = Fraunces({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         </MotionDiv>
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
