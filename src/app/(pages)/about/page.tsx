@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AboutUs() {
   return (
-    <main className="max-w-7xl xl:mx-auto">
+    <main className="max-w-7xl xl:mx-auto px-6">
       <section className="relative mx-4 mt-4 max-h-[550px] max-w-7xl overflow-hidden rounded-xl xl:mx-auto">
         <picture>
           <source
@@ -37,7 +37,7 @@ export default function AboutUs() {
           </p>
         </div>
       </section>
-      <section className="mx-4 mt-12 justify-center space-x-4 md:flex xl:mx-auto">
+      <section className="mx-4 mt-12 justify-center space-x-4 md:flex xl:mx-auto items-center">
         <picture>
           <source
             srcSet="/about/desktop-commitment.jpg"
@@ -61,7 +61,7 @@ export default function AboutUs() {
           <h2 className="mt-8 text-center text-3xl font-bold text-t-dark">
             Our commitment
           </h2>
-          <p className="mx-6 mt-5 text-center text-lg font-extralight leading-8  md:w-96 xl:w-[600px]">
+          <p className="mx-6 mt-5 text-left text-lg font-extralight leading-8  md:w-96 xl:w-[600px] xl:px-10">
             We’re built on a simple mission and a commitment to doing good along
             the way. We want to make it easy for you to discover and brew the
             world’s best coffee at home. It all starts at the source. To locate

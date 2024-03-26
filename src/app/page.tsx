@@ -4,7 +4,7 @@ import PopularItem from "./_components/Homepage/PopularItem";
 
 export default async function Home() {
   return (
-    <main>
+    <main className="px-6">
       <CTA />
       <OurCollection />
       <PopularItem />
