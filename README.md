@@ -2,6 +2,16 @@
 
 Kofi is a minimalist e-commerce platform dedicated to selling premium coffee products. Leveraging the power of modern web technologies, Kofi offers a seamless shopping experience for coffee enthusiasts.
 
+## Table of Contents
+
+- [Features](#features)
+- [Demo](#demo)
+- [Tech Stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - **Homepage**: The homepage features a hero section with a call to action, a section for featured products, and a section for our collection.
