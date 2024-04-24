@@ -1,101 +1,65 @@
 "use client";
 
-import React, { useEffect } from "react";
-import Image from "next/image";
+import React, { useCallback, useEffect } from "react";
 
 import useCoffeeStore from "@/store/useCoffeeStore";
-import { Coffee } from "@/interfaces/Coffee";
-import { Badge } from "../ui/badge";
-import { capitalize } from "@/utils/Capitalize";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { MotionDiv } from "../MotionDiv";
+import CoffeeItem from "./CoffeeItem";
+import CoffeeSkeleton from "./CoffeeSkeleton";
 
-const fadeInVariants = {
-  initial: {
-    opacity: 0,
-    y: 100,
-  },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.08 * index,
-    },
-  }),
-};
+export default function CoffeesGrid() {
+  const { filters, setCoffees, coffees } = useCoffeeStore();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState("");
 
-export default function CoffeesGrid({
-  coffees: coffeesToBeSaved,
-}: {
-  coffees: Coffee[];
-}) {
-  useEffect(
-    () => useCoffeeStore.setState({ coffees: coffeesToBeSaved }),
-    [coffeesToBeSaved]
-  );
-  const coffees = useCoffeeStore((state) => state.coffees);
+  const fetchFilteredData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const { roast, intensity, sort } = filters;
+      const queryParams = new URLSearchParams();
+
+      if (roast && roast.length > 0)
+        queryParams.append("roast", roast.join(","));
+      if (intensity && intensity.length > 0)
+        queryParams.append("intensity", intensity.join(","));
+      if (sort) queryParams.append("sort", sort);
+
+      const queryString = queryParams.toString();
+
+      const data = await fetch(
+        `/api/getCoffees${queryString ? `?${queryString}` : ""}`
+      ).then((res) => res.json());
+
+      // await delay(5000);
+      setCoffees(data);
+    } catch (error) {
+      setError(`Error fetching data, ${error}`);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [filters]);
+
+  useEffect(() => {
+    fetchFilteredData();
+  }, [fetchFilteredData]);
 
   return (
     <>
       <p className="hidden text-center sm:block sm:text-left">
-        Showing 1 - {coffees.length} of {coffees.length} Coffees
+        {isLoading ? "Loading..." : `Showing 1 - ${coffees.length} of ${coffees.length} Coffees`}
       </p>
       <section className="grid gap-6 sm:grid-cols-2 sm:py-5 lg:grid-cols-3">
-        {coffees.map((coffee, index) => (
-          <Link key={coffee.id} href={`/shop/${coffee.id}`}>
-            <MotionDiv
-              key={coffee.id}
-              variants={fadeInVariants}
-              initial="initial"
-              whileInView="animate"
-              custom={index}
-              viewport={{ once: true }}
-            >
-              <div key={coffee.id} className="relative mx-auto max-w-96">
-                <Image
-                  src={coffee.imageUrl}
-                  alt={coffee.name}
-                  width={400}
-                  height={280}
-                  className="rounded-lg bg-[#e9e3dd90]"
-                />
-                <div className="flex items-center justify-between">
-                  <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
-                    <Badge
-                      variant="outline"
-                      className={cn(
-                        "h-5 font-sans text-black",
-                        coffee.intensity === "mild" && "bg-secondary",
-                        coffee.intensity === "medium" && "bg-[#c6cfd7]",
-                        coffee.intensity === "bold" && "bg-black text-white"
-                      )}
-                    >
-                      {capitalize(coffee.intensity)} intensity
-                    </Badge>
-                    <Badge
-                      variant="default"
-                      className={cn(
-                        "h-5 font-sans text-black",
-                        coffee.roast === "light" && "bg-secondary",
-                        coffee.roast === "medium" && "bg-[#c6cfd7]",
-                        coffee.roast === "dark" && "bg-black text-white"
-                      )}
-                    >
-                      {capitalize(coffee.roast)} roast
-                    </Badge>
-                  </div>
-                </div>
-                <h6 className="my-1 font-bold">{coffee.name}</h6>
-                <p className="line-clamp-1 text-sm text-gray-500">
-                  {coffee.description}
-                </p>
-                <p className="font-semibold">${coffee.price}</p>
-              </div>
-            </MotionDiv>
-          </Link>
-        ))}
+        {isLoading
+          ? <CoffeeSkeleton />
+          : coffees.map((coffee, index) => (
+            <CoffeeItem key={coffee.id} coffee={coffee} index={index} />
+          ))}
       </section>
+      {error && <div className="text-center">
+        <h3 className="font-sans">Error fetching data</h3>
+        <p>{error}</p>
+      </div>}
     </>
   );
 }
+
+
