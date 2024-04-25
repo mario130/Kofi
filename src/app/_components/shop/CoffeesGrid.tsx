@@ -9,6 +9,7 @@ import CoffeeSkeleton from "./CoffeeSkeleton";
 export default function CoffeesGrid() {
   const { filters, setCoffees, coffees } = useCoffeeStore();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [loadingText, setLoadingText] = React.useState("Loading...");
   const [error, setError] = React.useState("");
 
   const fetchFilteredData = useCallback(async () => {
@@ -29,7 +30,6 @@ export default function CoffeesGrid() {
         `/api/getCoffees${queryString ? `?${queryString}` : ""}`
       ).then((res) => res.json());
 
-      // await delay(5000);
       setCoffees(data);
     } catch (error) {
       setError(`Error fetching data, ${error}`);
@@ -42,10 +42,18 @@ export default function CoffeesGrid() {
     fetchFilteredData();
   }, [fetchFilteredData]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (isLoading) setLoadingText("Lambda is warming up, please wait...");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [isLoading]);
+
   return (
     <>
       <p className="hidden text-center sm:block sm:text-left">
-        {isLoading ? "Loading..." : `Showing 1 - ${coffees.length} of ${coffees.length} Coffees`}
+        {isLoading ? loadingText : `Showing 1 - ${coffees.length} of ${coffees.length} Coffees`}
       </p>
       <section className="grid gap-6 sm:grid-cols-2 sm:py-5 lg:grid-cols-3">
         {isLoading

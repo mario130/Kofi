@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AboutUs() {
   return (
-    <main className="max-w-7xl xl:mx-auto px-6">
+    <main className="px-6">
       <section className="relative mx-4 mt-4 max-h-[550px] max-w-7xl overflow-hidden rounded-xl xl:mx-auto">
         <picture>
           <source

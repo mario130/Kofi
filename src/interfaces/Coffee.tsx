@@ -7,4 +7,5 @@ export interface Coffee {
   price: number;
   roast: "light" | "medium" | "dark";
   stock: number;
+  rating: number;
 }

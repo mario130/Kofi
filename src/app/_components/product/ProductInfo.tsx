@@ -7,6 +7,7 @@ import {
 import { Coffee } from "@/interfaces/Coffee";
 import { capitalize } from "@/utils/Capitalize";
 import { MotionDiv } from "../MotionDiv";
+import { StarFilledIcon } from "@radix-ui/react-icons";
 
 export default function ProductInfo({ coffee }: { coffee?: Coffee }) {
   return (
@@ -20,7 +21,15 @@ export default function ProductInfo({ coffee }: { coffee?: Coffee }) {
           <p className="text-medium hover:text-ui-fg-subtle text-gray-400">
             {capitalize(coffee?.roast || "")} Roast
           </p>
-          <h1 className="text-3xl font-semibold">{coffee?.name}</h1>
+          <h1 className="text-3xl font-semibold mb-6 flex justify-between space-x-5 items-center">
+            <span>{coffee?.name}</span>
+            {coffee?.rating && (
+              <span className="flex space-x-1">
+                <StarFilledIcon color="orange" height={20} width={20} />
+                <span className="text-orange-400 text-sm">{coffee.rating}</span>
+              </span>
+            )}
+          </h1>
           <p className="leading-6 text-gray-500">{coffee?.description}</p>
 
           <Accordion

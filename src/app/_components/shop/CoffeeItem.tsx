@@ -3,9 +3,8 @@ import React from 'react'
 import { MotionDiv } from '../MotionDiv';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Badge } from '../ui/badge';
-import { capitalize } from '@/utils/Capitalize';
-import { cn } from '@/lib/utils';
+import { StarFilledIcon } from '@radix-ui/react-icons';
+import { motion } from "framer-motion";
 
 const fadeInVariants = {
   initial: {
@@ -37,34 +36,17 @@ export default function CoffeeItem({ coffee, index }: { coffee: Coffee; index: n
           alt={coffee.name}
           width={400}
           height={280}
-          className="rounded-lg bg-[#e9e3dd90]" />
-        <div className="flex items-center justify-between">
-          <div className="absolute right-2 top-2 flex flex-col items-end space-y-1">
-            <Badge
-              variant="outline"
-              className={cn(
-                "h-5 font-sans text-black",
-                coffee.intensity === "mild" && "bg-secondary",
-                coffee.intensity === "medium" && "bg-[#c6cfd7]",
-                coffee.intensity === "bold" && "bg-black text-white"
-              )}
-            >
-              {capitalize(coffee.intensity)} intensity
-            </Badge>
-            <Badge
-              variant="default"
-              className={cn(
-                "h-5 font-sans text-black",
-                coffee.roast === "light" && "bg-secondary",
-                coffee.roast === "medium" && "bg-[#c6cfd7]",
-                coffee.roast === "dark" && "bg-black text-white"
-              )}
-            >
-              {capitalize(coffee.roast)} roast
-            </Badge>
-          </div>
-        </div>
-        <h6 className="my-1 font-bold">{coffee.name}</h6>
+          className="rounded-lg bg-[#e9e3dd90] relative" />
+        <h6 className="my-1 font-bold flex items-center justify-between space-x-2">
+          <span>{coffee.name}</span>
+          <motion.span
+            className="flex space-x-1 rounded-full bg-orange-100 border border-orange-200 px-2 py-[3px] absolute top-2 right-2"
+            whileHover={{ scale: 1.1 }}
+          >
+            <StarFilledIcon color="orange" height={15} width={15} />
+            <span className="text-orange-400 text-xs">{coffee.rating}</span>
+          </motion.span>
+        </h6>
         <p className="line-clamp-1 text-sm text-gray-500">
           {coffee.description}
         </p>
