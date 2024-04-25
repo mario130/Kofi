@@ -33,7 +33,7 @@ export default function OurCollection() {
       <h3 className="bg-gradient-to-b from-gray-900/50 to-gray-100/90 bg-clip-text text-center text-4xl font-black text-transparent sm:to-gray-100/10 sm:text-7xl xl:from-gray-400 xl:text-9xl">
         Our collection
       </h3>
-      <div className="mx-auto max-w-7xl sm:-mt-16 xl:-mt-20 xl:flex xl:w-full">
+      <div className="sm:-mt-16 xl:-mt-20 xl:flex xl:w-full">
         {mainKofis.map((kofi, index) => (
           <section
             key={index}

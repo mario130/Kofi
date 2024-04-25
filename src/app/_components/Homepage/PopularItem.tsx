@@ -52,7 +52,7 @@ export default function PopularItem() {
   ];
 
   return (
-    <section className="mx-4 mt-28 max-w-7xl xl:mx-auto">
+    <section className="mx-4 mt-28">
       <div className="text-center">
         <h4 className="text-center font-bold text-t-gray">BUILD YOUR BASE.</h4>
       </div>

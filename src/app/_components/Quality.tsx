@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Quality() {
   return (
-    <section className="mx-auto mt-36 max-w-7xl">
-      <div className="mx-4 rounded-xl bg-gray-800 px-8 pb-20 text-center text-t-cream md:px-14 lg:mt-28 lg:flex lg:flex-row-reverse lg:items-center lg:px-10 lg:pb-0">
+    <section className="mx-auto  max-w-7xl">
+      <div className="mx-4 rounded-xl bg-gray-800 px-8 pb-20 text-center text-t-cream md:px-14 mt-48  lg:flex lg:flex-row-reverse lg:items-center lg:px-10 lg:pb-0">
         <picture>
           <source srcSet="/quality-desktop.jpg" media="(min-width: 1024px)" />
           <source srcSet="/quality-tablet.jpg" media="(min-width: 800px)" />
@@ -16,7 +16,7 @@ export default function Quality() {
             style={{ width: "100%", height: "100%" }}
             layout="responsive"
             objectFit="cover"
-            className="relative -top-24 mt-32 rounded-xl brightness-95 md:-top-40 md:mt-48 lg:-top-20 lg:mt-0"
+            className="relative -top-24 mt-32 rounded-xl brightness-95 md:-top-40 md:mt-60 lg:-top-20 lg:mt-0"
           />
         </picture>
         <div className="relative md:-top-10 lg:top-0 lg:w-[540px] lg:flex-1 lg:px-10">

@@ -34,27 +34,26 @@ export default function Item({ params }: { params: { item: string } }) {
       <main>
         <ProductBreadcrump name={coffee?.name} />
 
-        <div className="relative flex flex-col gap-16 sm:flex-row sm:items-start sm:py-6">
+        <div className="relative flex flex-col gap-16 sm:flex-row sm:items-start sm:justify-between sm:py-6">
           <ProductInfo coffee={coffee} />
 
-          <div className="relative block w-full">
-            <MotionDiv
-              transition={{ ease: "easeInOut", duration: 0.4, delay: 0.6 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="rounded-lg border bg-[#e9e3dd90]">
-                <Image
-                  src={coffee?.imageUrl ?? ""}
-                  alt={coffee?.name ?? ""}
-                  width={400}
-                  height={400}
-                  objectFit="cover"
-                  layout="responsive"
-                />
-              </div>
-            </MotionDiv>
-          </div>
+          <MotionDiv
+            className="relative block w-full"
+            transition={{ ease: "easeInOut", duration: 0.4, delay: 0.6 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <Image
+              className="rounded-lg border bg-[#e9e3dd90]"
+              src={coffee?.imageUrl ?? ""}
+              alt={coffee?.name ?? ""}
+              width={400}
+              height={400}
+              objectFit="contain"
+              layout="responsive"
+              priority
+            />
+          </MotionDiv>
 
           <ProductOptions coffee={coffee} />
         </div>
