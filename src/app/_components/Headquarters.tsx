@@ -30,13 +30,13 @@ export default function Headquarters() {
   ];
 
   return (
-    <section className="mx-8 mt-16 lg:mx-auto lg:max-w-5xl">
+    <section className="mx-8 mt-20 lg:mx-auto lg:max-w-5xl">
       <h4 className="text-center font-bold text-t-gray">Our headquarters</h4>
       <div className="md:flex justify-around">
         {countries.map((country, index) => (
           <div
             key={index}
-            className="mt-20 flex flex-col items-center justify-center md:mt-14 md:items-start"
+            className="mt-20 flex flex-col items-center justify-center md:mt-10 md:items-start"
           >
             <Image
               src={country.icon}

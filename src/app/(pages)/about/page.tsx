@@ -23,6 +23,7 @@ export default function AboutUs() {
             layout="responsive"
             objectFit="cover"
             priority
+            className="brightness-90"
           />
         </picture>
         <div className="absolute top-0 flex h-full w-full flex-col justify-center text-center text-white sm:w-auto md:text-left">
@@ -58,7 +59,7 @@ export default function AboutUs() {
           />
         </picture>
         <div>
-          <h2 className="mt-8 text-center text-3xl font-bold text-t-dark">
+          <h2 className="mt-8 text-center text-3xl font-bold text-t-gray">
             Our commitment
           </h2>
           <p className="mx-6 mt-5 text-left text-lg font-extralight leading-8  md:w-96 xl:w-[600px] xl:px-10">

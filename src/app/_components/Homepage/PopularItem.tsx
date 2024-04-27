@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { MotionDiv } from "../MotionDiv";
 
 export default function PopularItem() {
   const leftSide = [
@@ -42,8 +44,9 @@ export default function PopularItem() {
 
   return (
     <section className="mx-4 mt-28 max-w-7xl xl:mx-auto">
-      <h4 className=" font-semibold tracking-tight">Build Your Base</h4>
-      <p>Choose your favorite base and we will deliver it to you.</p>
+      {/* <h4 className=" font-semibold tracking-tight text-[#c7a579]">Build Your Base</h4>
+      <p>Choose your favorite base and we will deliver it to you.</p> */}
+      <h4 className="text-center font-bold text-t-gray">Build Your Base</h4>
       <main className="mt-10 space-y-4 flex flex-col lg:flex-row lg:space-x-2 lg:space-y-0">
         <aside className="lg:ml-auto order-2 lg:order-1">
           {leftSide.map((item, index) => (
@@ -59,20 +62,25 @@ export default function PopularItem() {
                 className="opacity-80"
               />
               <div className="flex flex-1 flex-col">
-                <h6 className="font-bold">{item.name}</h6>
+                <h6 className="font-bold text-[#c7a579]">{item.name}</h6>
                 <p className="mt-2">{item.description}</p>
               </div>
             </div>
           ))}
         </aside>
-        <div className="flex justify-center lg:block order-1 lg:order-2">
+        <MotionDiv
+          // keep the item rotating a bit left and right
+          initial={{ rotate: 0 }}
+          whileInView={{ rotate: [5, -5, 5] }}
+          whileHover={{ scale: 1.1 }}
+          className="flex justify-center lg:block order-1 lg:order-2">
           <Image
             src="/homepage/cup.webp"
             alt="Popular Item"
             width={400}
             height={500}
           />
-        </div>
+        </MotionDiv>
         <aside className="order-3">
           {rightSide.map((item, index) => (
             <div
@@ -87,7 +95,7 @@ export default function PopularItem() {
                 className="opacity-80"
               />
               <div className="flex flex-1 flex-col items-start">
-                <h6 className="font-bold">{item.name}</h6>
+                <h6 className="font-bold text-[#c7a579]">{item.name}</h6>
                 <p className="mt-2">{item.description}</p>
               </div>
             </div>

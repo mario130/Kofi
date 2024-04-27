@@ -48,12 +48,7 @@ export default function Suggestions({
         "mt-10 space-y-1",
         className ?? ""
       )}>
-        <h2 className="text-2xl font-semibold tracking-tight">
-          {title ?? "You might also like"}
-        </h2>
-        <p className="text-muted-foreground text-sm">
-          {content ?? "Here are some other coffees you might like"}
-        </p>
+        <h4 className="text-center font-bold text-t-gray">{title ?? "You might also like"}</h4>
       </div>
       <Separator className="my-4" />
       <div className="relative">
