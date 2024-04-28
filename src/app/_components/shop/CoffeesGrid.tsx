@@ -53,10 +53,10 @@ export default function CoffeesGrid() {
   return (
     <>
       <p className="hidden text-center sm:block sm:text-left">
-        {isLoading ? loadingText : `Showing 1 - ${coffees.length} of ${coffees.length} Coffees`}
+        {!coffees.length && isLoading ? loadingText : `Showing 1 - ${coffees.length} of ${coffees.length} Coffees`}
       </p>
       <section className="grid gap-6 sm:grid-cols-2 sm:py-5 lg:grid-cols-3">
-        {isLoading
+        {!coffees.length && isLoading
           ? <CoffeeSkeleton />
           : coffees.map((coffee, index) => (
             <CoffeeItem key={coffee.id} coffee={coffee} index={index} />

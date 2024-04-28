@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="relative pt-4 mt-10">
+          <div className="relative pt-4 mt-10 mx-4">
             <h6 className="text-right text-sm font-semibold text-[#c7a579] before:absolute before:w-full before:h-0.5 before:bg-[#fbe6ca] before:top-0 before:left-0">
               Copyright &copy; {new Date().getFullYear()}. Made by{" "}
               <Link href="https://marioyonan.com" className="underline">
